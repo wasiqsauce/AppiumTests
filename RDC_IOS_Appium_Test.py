@@ -1,4 +1,4 @@
-#RDC-Iphone-Appium-AppTest
+#Test Passed on Sauce Labs - Application working properly
 import os
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
@@ -17,18 +17,27 @@ def test_ios_app():
         # Initialize AppiumOptions for iOS
         options = XCUITestOptions()
         options.set_capability("platformName", "iOS")
-        options.set_capability("appium:platformVersion", "17.6")  # Adjust to match available device version
+        options.set_capability("appium:platformVersion", "16.7")  # Adjust to match available device version
         options.set_capability("appium:deviceName", "iPhone.*")  # Dynamic device allocation
         options.set_capability("appium:automationName", "XCUITest")
         options.set_capability("appium:app", "storage:filename=SauceLabs-Demo-App.ipa")  # Replace with your app's filename
-        options.set_capability("appium:appiumVersion", "2.0.0")
-        options.set_capability("browserName", "")
+        options.set_capability("appium:language", "en")
+        options.set_capability("appium:locale", "en_US")
+        #options.set_capability("appium:appiumVersion", "2.0.0")
+        options.set_capability("appium:orientation", "PORTRAIT")
+        options.set_capability("autoDismissAlerts",True)
+        options.set_capability("newCommandTimeout",360)
+        options.set_capability("browserName", "Safari")
         # Sauce Labs specific options
         options.set_capability("sauce:options", {
             "name": "iOS App Test",
             "appiumVersion": "latest",
+            "deviceOrientation": "PORTRAIT",
             "sessionCreationRetry": 2,
-            "sessionCreationTimeout": 300000
+            "sessionCreationTimeout": 300000,
+            "imageInjection": True,
+            # "tunnelName": "oauth-wasiq.wani-2032a_tunnel_name",
+            # "tunnelOwner": "oauth-wasiq.wani-2032a"
         })
 
         # Initialize the Appium driver

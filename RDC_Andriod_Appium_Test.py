@@ -1,3 +1,4 @@
+#Test Passed on Sauce Labs - Application working properly
 import os
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
@@ -22,19 +23,28 @@ def test_android_app():
         # Initialize UiAutomator2Options for Android
         options = UiAutomator2Options()
         options.set_capability("platformName", "Android")
-        options.set_capability("appium:platformVersion", "15")  # Adjust to match available device version
-        options.set_capability("appium:deviceName", "Google.*")  # Dynamic device allocation (e.g., any Google device)
+        options.set_capability("appium:platformVersion", "13")  # Adjust to match available device version
+        options.set_capability("appium:deviceName", "Samsung Galaxy S23 Plus")
         options.set_capability("appium:automationName", "UiAutomator2")
         options.set_capability("appium:app",
-                               "storage:filename=Android-MyDemoAppRN.1.3.0.build-244.apk")  # Replace with your app's filename
-        options.set_capability("appium:appiumVersion", "2.0.0")
+                               "storage:filename=Android-MyDemoAppRN.1.3.0.build-244.apk")
+        #options.set_capability("appium:appiumVersion", "2.0.0")
+        options.set_capability("appium:language","en")
+        options.set_capability("appium:locale","US")
+        options.set_capability("orientation","PORTRAIT")
+        options.set_capability("autoGrantPermissions",True)
+        options.set_capability("newCommandTimeout",90)
         options.set_capability("browserName", "")
         # Sauce Labs specific options
         options.set_capability("sauce:options", {
-            "name": "Android App Test",
-            "appiumVersion": "latest",
+            "name": "Android App Test - RDC",
+            "appiumVersion": "stable",
             "sessionCreationRetry": 2,
-            "sessionCreationTimeout": 300000
+            "sessionCreationTimeout": 300000,
+            "deviceOrientation": "PORTRAIT",
+            "imageInjection": True,
+            # "tunnelName": "oauth-wasiq.wani-2032a_tunnel_name",
+            # "tunnelOwner": "oauth-wasiq.wani-2032a"
         })
 
         # Initialize the Appium driver
