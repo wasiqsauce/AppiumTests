@@ -48,6 +48,7 @@ def test_android_emulator_app():
 
         # Wait for the app to load
         time.sleep(5)
+        print(f"SauceOnDemandSessionID={self.session_id} job-name={sauce_options['name']}")
         #
         # # Example test action: Find an element by accessibility ID and interact
         # # For the demo app, interacting with the login field
